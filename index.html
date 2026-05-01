@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>AIOU BS Psychology Semester 1 Study Portal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="site-header">
+      <div class="brand-wrap">
+        <div class="brand-mark">Ψ</div>
+        <div>
+          <p class="eyebrow">AIOU BS Psychology • Semester 1</p>
+          <h1>Final Offline Study Website</h1>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="themeToggle" class="ghost-btn" type="button">Toggle theme</button>
+        <button id="focusModeBtn" class="primary-btn" type="button">Focus mode</button>
+      </div>
+    </header>
+
+    <nav class="top-nav">
+      <a href="#dashboard">Dashboard</a>
+      <a href="#library">Library</a>
+      <a href="#courses">Courses</a>
+      <a href="#quiz">Quiz Mode</a>
+      <a href="#assignment">Assignments</a>
+      <a href="#planner">Planner</a>
+    </nav>
+
+    <main>
+      <section id="dashboard" class="hero-panel glass-card">
+        <div class="hero-copy">
+          <p class="eyebrow">Everything local • No external links</p>
+          <h2>Study directly from one deploy-ready website.</h2>
+          <p class="hero-text">
+            This final build is designed for GitHub and Vercel deployment. It includes local textbook files, internal study notes, revision prompts, quizzes, assignment drafting, a simple planner, progress saving, dark mode, and offline-friendly caching.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#library">Open textbook library</a>
+            <a class="ghost-btn" href="#assignment">Generate assignment</a>
+          </div>
+          <div class="hero-badges">
+            <span>5 local PDF books included</span>
+            <span>1 internal Pakistan Studies guide</span>
+            <span>Quiz + revision + notes</span>
+            <span>Word-compatible export</span>
+          </div>
+        </div>
+        <aside class="hero-side card-stack">
+          <article class="mini-card">
+            <strong>Official semester pattern</strong>
+            <p>Workshop, two LMS assignments, one online quiz, and the final exam are reflected throughout the study tools.</p>
+          </article>
+          <article class="mini-card">
+            <strong>Start studying now</strong>
+            <p>Select a course, read notes, open the local PDF, test yourself, and save progress inside your browser.</p>
+          </article>
+        </aside>
+      </section>
+
+      <section class="stats-grid">
+        <article class="stat-card glass-card">
+          <span class="stat-value">6</span>
+          <span class="stat-label">Semester 1 courses</span>
+        </article>
+        <article class="stat-card glass-card">
+          <span class="stat-value">45+</span>
+          <span class="stat-label">Unit summaries</span>
+        </article>
+        <article class="stat-card glass-card">
+          <span class="stat-value">24</span>
+          <span class="stat-label">Built-in quiz questions</span>
+        </article>
+        <article class="stat-card glass-card">
+          <span class="stat-value">100%</span>
+          <span class="stat-label">Local study access</span>
+        </article>
+      </section>
+
+      <section id="library" class="section-panel glass-card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Library</p>
+            <h2>Offline textbook home</h2>
+          </div>
+          <p class="section-note">All embedded study material in this build is local. Choose a course to read its PDF or internal guide without leaving the website.</p>
+        </div>
+        <div class="library-layout">
+          <aside class="library-sidebar" id="librarySidebar"></aside>
+          <div class="reader-panel">
+            <div class="reader-toolbar">
+              <div>
+                <h3 id="readerTitle">Textbook Reader</h3>
+                <p id="readerMeta" class="muted"></p>
+              </div>
+              <button id="openReaderBtn" class="ghost-btn" type="button">Open full screen</button>
+            </div>
+            <div id="readerMount" class="reader-mount"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="courses" class="section-panel glass-card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Course Explorer</p>
+            <h2>Unit-wise notes and revision prompts</h2>
+          </div>
+          <div class="search-wrap">
+            <input id="courseSearch" type="search" placeholder="Search units, topics, prompts..." />
+          </div>
+        </div>
+        <div class="course-tabs" id="courseTabs"></div>
+        <div id="courseContent" class="course-content"></div>
+      </section>
+
+      <section id="quiz" class="section-panel glass-card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Quiz Mode</p>
+            <h2>Practice with instant feedback</h2>
+          </div>
+          <div class="quiz-controls">
+            <select id="quizCourseSelect"></select>
+            <button id="startQuizBtn" class="primary-btn" type="button">Start quiz</button>
+          </div>
+        </div>
+        <div id="quizMount" class="quiz-mount">
+          <div class="empty-state">
+            <h3>Select a course and start quiz mode</h3>
+            <p>Your score and last attempt are saved in your browser.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="assignment" class="section-panel glass-card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Assignment Studio</p>
+            <h2>Generate a clean Word-ready draft</h2>
+          </div>
+          <p class="section-note">This generates a polished assignment draft and downloads it as a Word-compatible .doc file.</p>
+        </div>
+        <div class="assignment-layout">
+          <form id="assignmentForm" class="assignment-form" autocomplete="off">
+            <label>
+              Student name
+              <input id="studentName" type="text" placeholder="Enter student name" />
+            </label>
+            <label>
+              Roll number
+              <input id="rollNumber" type="text" placeholder="Enter roll number" />
+            </label>
+            <label>
+              Course
+              <select id="assignmentCourse"></select>
+            </label>
+            <label>
+              Assignment number
+              <select id="assignmentNumber">
+                <option value="Assignment 1">Assignment 1</option>
+                <option value="Assignment 2">Assignment 2</option>
+              </select>
+            </label>
+            <label>
+              Unit
+              <select id="assignmentUnit"></select>
+            </label>
+            <label>
+              Writing style
+              <select id="assignmentTone">
+                <option value="Balanced academic">Balanced academic</option>
+                <option value="Concise exam style">Concise exam style</option>
+                <option value="Detailed explanatory">Detailed explanatory</option>
+              </select>
+            </label>
+            <div class="assignment-actions">
+              <button id="previewAssignmentBtn" class="primary-btn" type="button">Preview draft</button>
+              <button id="downloadAssignmentBtn" class="ghost-btn" type="button">Download .doc</button>
+            </div>
+          </form>
+          <div class="assignment-preview-wrap">
+            <div id="assignmentPreview" class="assignment-preview">Your assignment preview will appear here.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="planner" class="section-panel glass-card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Planner + Progress</p>
+            <h2>Track study targets and finished tasks</h2>
+          </div>
+          <p class="section-note">This planner is local and saves automatically in your browser.</p>
+        </div>
+        <div class="planner-layout">
+          <div class="planner-card">
+            <div class="planner-input-row">
+              <input id="taskInput" type="text" placeholder="Add a task, for example: Revise Psychology Unit 3" />
+              <button id="addTaskBtn" class="primary-btn" type="button">Add task</button>
+            </div>
+            <ul id="taskList" class="task-list"></ul>
+          </div>
+          <div class="planner-card">
+            <h3>Quick revision suggestions</h3>
+            <div id="revisionSuggestions" class="suggestion-list"></div>
+            <div class="progress-box">
+              <strong id="taskSummary">0 / 0 tasks completed</strong>
+              <div class="progress-bar"><span id="taskProgressFill"></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Built as a self-contained semester 1 study portal for GitHub and Vercel deployment.</p>
+    </footer>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

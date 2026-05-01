@@ -1,0 +1,9 @@
+{
+  "name": "aiou-bs-psychology-sem1-final-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Final self-contained study portal for AIOU BS Psychology Semester 1",
+  "scripts": {
+    "dev": "python3 tools/serve_local.py"
+  }
+}
